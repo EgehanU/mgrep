@@ -1,7 +1,7 @@
 # mgrep
 
 A multithreaded file search tool, like a simplified grep. Built this to practice
-C++17 concurrency — thread pool, std::filesystem, the works.
+C++17 concurrency ; thread pool, std::filesystem, the works.
 
 Searches recursively through a directory and distributes files across worker threads.
 On large codebases it's noticeably faster than single-threaded search, on small ones
