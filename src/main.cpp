@@ -21,7 +21,7 @@ static bool colorEnabled = true;
 // wraps text in color only if colors are on
 static std::string colored(const std::string& text, const char* code) {
     if (!colorEnabled) return text;
-    return std::string(code) + text +CLR_RESET;
+    return std::string(code) + text + CLR_RESET;
 }
 
 static void printUsage(const char* argv0) {
@@ -40,8 +40,6 @@ static void printUsage(const char* argv0) {
 }
 
 // print one file's results to stdout
-// using a single function so we can lock if needed - but actually stdout writes
-// are atomic enough per line on linux so probably fine without a lock here
 static void printFileResult(const FileResult& fr, const SearchConfig& cfg) {
     std::string fname = colored(fr.filepath, CLR_MAGENTA);
 
@@ -179,6 +177,6 @@ int main(int argc, char* argv[]) {
               << colored("(" + std::to_string(elapsed * 1000.0).substr(0, 5) + "ms)", CLR_GREEN)
               << "\n";
 
-    // return 0 if matches found, 1 if not same convention as grep
+    // return 0 if matches found, 1 if not - same convention as grep
     return (searcher.totalMatches() > 0) ? 0 : 1;
 }
